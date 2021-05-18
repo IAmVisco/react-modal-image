@@ -1,60 +1,53 @@
-import React, { Component } from "react";
+import React, { useState } from 'react';
 
-import Lightbox from "./Lightbox";
+import { Lightbox } from './Lightbox';
 
-export { default as Lightbox } from "./Lightbox";
+export { Lightbox } from './Lightbox';
 
-export default class extends Component {
-  state = { modalOpen: false };
+export const ModalImage = ({
+  className,
+  small,
+  smallSrcSet,
+  medium,
+  large,
+  alt,
+  hideDownload,
+  hideZoom,
+  showRotate,
+  imageBackgroundColor,
+}) => {
+  const [modalOpen, changeModalOpen] = useState(false);
 
-  toggleModal = () => {
-    this.setState(prev => ({
-      modalOpen: !prev.modalOpen
-    }));
+  const toggleModal = () => {
+    changeModalOpen(!modalOpen);
   };
 
-  render() {
-    const {
-      className,
-      small,
-      smallSrcSet,
-      medium,
-      large,
-      alt,
-      hideDownload,
-      hideZoom,
-      showRotate,
-      imageBackgroundColor
-    } = this.props;
-    const { modalOpen } = this.state;
-
-    return (
-      <div>
-        <img
-          className={className}
-          style={{
-            cursor: "pointer",
-            maxWidth: "100%",
-            maxHeight: "100%"
-          }}
-          onClick={this.toggleModal}
-          src={small}
-          srcSet={smallSrcSet}
+  return (
+    <div>
+      <img
+        className={className}
+        style={{
+          cursor: 'pointer',
+          maxWidth: '100%',
+          maxHeight: '100%',
+        }}
+        onClick={toggleModal}
+        src={small}
+        srcSet={smallSrcSet}
+        alt={alt}
+      />
+      {modalOpen && (
+        <Lightbox
+          medium={medium}
+          large={large}
           alt={alt}
+          onClose={toggleModal}
+          hideDownload={hideDownload}
+          hideZoom={hideZoom}
+          showRotate={showRotate}
+          imageBackgroundColor={imageBackgroundColor}
         />
-        {modalOpen && (
-          <Lightbox
-            medium={medium}
-            large={large}
-            alt={alt}
-            onClose={this.toggleModal}
-            hideDownload={hideDownload}
-            hideZoom={hideZoom}
-            showRotate={showRotate}
-            imageBackgroundColor={imageBackgroundColor}
-          />
-        )}
-      </div>
-    );
-  }
-}
+      )}
+    </div>
+  );
+};

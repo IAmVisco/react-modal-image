@@ -1,8 +1,8 @@
-import React from "react";
+import React from 'react';
 
-import { ZoomInIcon, ZoomOutIcon, DownloadIcon, CloseIcon, RotateIcon } from "./icons";
+import { CloseIcon, DownloadIcon, RotateIcon, ZoomInIcon, ZoomOutIcon } from './icons';
 
-const Header = ({
+export const Header = ({
   image,
   alt,
   zoomed,
@@ -11,7 +11,7 @@ const Header = ({
   onClose,
   enableDownload,
   enableZoom,
-  enableRotate
+  enableRotate,
 }) => (
   <div className="__react_modal_image__header">
     <span className="__react_modal_image__icon_menu">
@@ -27,7 +27,7 @@ const Header = ({
       )}
       {enableRotate && (
         <a onClick={toggleRotate}>
-          <RotateIcon/>
+          <RotateIcon />
         </a>
       )}
       <a onClick={onClose}>
@@ -37,5 +37,3 @@ const Header = ({
     {alt && <span className="__react_modal_image__caption">{alt}</span>}
   </div>
 );
-
-export default Header;

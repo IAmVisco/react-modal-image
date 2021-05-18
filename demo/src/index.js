@@ -1,7 +1,7 @@
-import React, { Component } from "react";
-import { render } from "react-dom";
+import React, { Component } from 'react';
+import { render } from 'react-dom';
 
-import ModalImage from "../../src";
+import { ModalImage } from '../../src';
 
 class Demo extends Component {
   render() {
@@ -11,7 +11,7 @@ class Demo extends Component {
 
         <h2>#1 with alt, small, medium and large props</h2>
 
-        <div style={{ maxWidth: "400px" }}>
+        <div style={{ maxWidth: '400px' }}>
           <ModalImage
             alt="Here is the caption"
             small="example_img_small.jpg"
@@ -23,7 +23,7 @@ class Demo extends Component {
 
         <h2>#2 with small and large props defined only</h2>
 
-        <div style={{ maxWidth: "400px" }}>
+        <div style={{ maxWidth: '400px' }}>
           <ModalImage
             small="example_img_small.jpg"
             large="example_img_large.jpg"
@@ -33,7 +33,7 @@ class Demo extends Component {
 
         <h2>#3 with small and medium props defined only</h2>
 
-        <div style={{ maxWidth: "400px" }}>
+        <div style={{ maxWidth: '400px' }}>
           <ModalImage
             small="example_img_small.jpg"
             medium="example_img_medium.jpg"
@@ -43,7 +43,7 @@ class Demo extends Component {
 
         <h2>#4 with download and zoom -buttons hidden</h2>
 
-        <div style={{ maxWidth: "400px" }}>
+        <div style={{ maxWidth: '400px' }}>
           <ModalImage
             small="example_img_small.jpg"
             large="example_img_large.jpg"
@@ -55,7 +55,7 @@ class Demo extends Component {
 
         <h2>#5 with transparent png shown in hotpink background</h2>
 
-        <div style={{ maxWidth: "400px" }}>
+        <div style={{ maxWidth: '400px' }}>
           <ModalImage
             small="example_transparent_heart.png"
             large="example_transparent_heart.png"
@@ -68,7 +68,7 @@ class Demo extends Component {
 
         <h2>#6 with rotation -button displayed</h2>
 
-        <div style={{ maxWidth: "400px" }}>
+        <div style={{ maxWidth: '400px' }}>
           <ModalImage
             small="example_img_small.jpg"
             large="example_img_large.jpg"
@@ -87,4 +87,4 @@ class Demo extends Component {
   }
 }
 
-render(<Demo />, document.querySelector("#demo"));
+render(<Demo />, document.querySelector('#demo'));

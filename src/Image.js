@@ -1,36 +1,31 @@
-import React, { Component } from "react";
+import React, { useState } from 'react';
 
-import { SpinnerIcon } from "./icons";
+import { SpinnerIcon } from './icons';
 
-export default class Image extends Component {
-  state = {
-    loading: true
+export const Image = ({ id, alt, className, src, style, handleDoubleClick, contextMenu }) => {
+  const [loading, setLoading] = useState(false);
+
+  const handleOnLoad = () => {
+    setLoading(false);
   };
 
-  handleOnLoad = () => {
-    this.setState({ loading: false });
+  const handleOnContextMenu = event => {
+    !contextMenu && event.preventDefault();
   };
 
-  handleOnContextMenu = event => {
-    !this.props.contextMenu && event.preventDefault();
-  };
-
-  render() {
-    const { id, className, src, style, handleDoubleClick } = this.props;
-
-    return (
-      <div>
-        {this.state.loading && <SpinnerIcon />}
-        <img
-          id={id}
-          className={className}
-          src={src}
-          style={style}
-          onLoad={this.handleOnLoad}
-          onDoubleClick={handleDoubleClick}
-          onContextMenu={this.handleOnContextMenu}
-        />
-      </div>
-    );
-  }
-}
+  return (
+    <div>
+      {loading && <SpinnerIcon />}
+      <img
+        id={id}
+        alt={alt}
+        className={className}
+        src={src}
+        style={style}
+        onLoad={handleOnLoad}
+        onDoubleClick={handleDoubleClick}
+        onContextMenu={handleOnContextMenu}
+      />
+    </div>
+  );
+};

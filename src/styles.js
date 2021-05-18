@@ -1,30 +1,28 @@
-import { Component } from "react";
+import { useEffect } from 'react';
 
 function appendStyle(id, css) {
-  if (!document.head.querySelector("#" + id)) {
-    const node = document.createElement("style");
+  if (!document.head.querySelector('#' + id)) {
+    const node = document.createElement('style');
     node.textContent = css;
-    node.type = "text/css";
+    node.type = 'text/css';
     node.id = id;
 
     document.head.appendChild(node);
   }
 }
 
-export default class StyleInjector extends Component {
-  componentDidMount() {
-    appendStyle(this.props.name, this.props.css);
-  }
+export const StyleInjector = ({ name, css }) => {
+  useEffect(() => {
+    appendStyle(name, css);
 
-  componentWillUnmount() {
-    const node = document.getElementById(this.props.name);
-    node.parentNode.removeChild(node);
-  }
+    return () => {
+      const node = document.getElementById(name);
+      node.parentNode.removeChild(node);
+    };
+  });
 
-  render() {
-    return null;
-  }
-}
+  return null;
+};
 
 export const lightboxStyles = ({ imageBackgroundColor }) => `
   body {
@@ -93,6 +91,7 @@ export const lightboxStyles = ({ imageBackgroundColor }) => `
     display: inline-block;
     color: white;
     font-size: 120%;
+    font-family: sans-serif;
     padding: 10px;
     margin: 0;
   }
