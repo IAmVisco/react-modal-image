@@ -4,9 +4,12 @@
   "description": "Lightweight Lightbox React Component",
   "main": "lib/index.js",
   "module": "es/index.js",
+  "types": "index.d.ts",
   "files": [
     "es",
-    "lib"
+    "lib",
+    "src",
+    "index.d.ts"
   ],
   "scripts": {
     "start:demo": "cd demo && webpack serve --open --mode development",
